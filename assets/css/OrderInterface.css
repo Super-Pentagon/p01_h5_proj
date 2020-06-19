@@ -11,7 +11,7 @@ body{
     padding: 0;
     width: 100%;
     box-sizing:border-box;
-    background-color: blue;
+    /* background-color: blue; */
 }
 .head p{
     font-size: 1.1em;
