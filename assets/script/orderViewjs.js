@@ -26,7 +26,7 @@ class HTTP{
                     jsonObj = JSON.parse(data);
 
                     for(var i in jsonObj){
-                        createOrders( father,jsonObj[i].pictureUrl,jsonObj[i].name, jsonObj[i].price,"123456789","button");
+                        createOrders( father,jsonObj[i].pictureUrl,jsonObj[i].name, jsonObj[i].price,"预计12：30送达","再来一单");
                     }
                     // alert(jsonObj[5].name);
                     //3、js中+号连接字符串   4、XMLHttpRequest对象的responseText属性获取从服务器返回的数据
@@ -57,7 +57,7 @@ function createOrders( father,picturesURL,name, priceNum,time,button){
     price.innerHTML = "合计:"
     var priceNumber = document.createElement('p');
     priceNumber.className = "priceNumber";
-    priceNumber.innerHTML = priceNum;
+    priceNumber.innerHTML = "￥"+priceNum;
     ordersTitle.appendChild(productName);
     ordersTitle.appendChild(price);
     ordersTitle.appendChild(priceNumber);
