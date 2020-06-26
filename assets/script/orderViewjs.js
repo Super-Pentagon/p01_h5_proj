@@ -77,9 +77,12 @@ function createOrders( father,picturesURL,name, priceNum,time,button){
     father.insertBefore(orders,father.firstChild);
 
 }
+var btn = document.querySelector('.btn');
 
 var father = document.querySelector('#bodys');
 var jsonOBJ = new HTTP();
 
 var jsonDataOBJ = jsonOBJ.XMLHtttp(father,'https://run.mocky.io/v3/46b38e9a-22ed-4ac7-88c8-bd6380a0b1be');
-
+function tiaozhuan(){
+    window.location.href = "ShoppingCartInterface.html"
+}
