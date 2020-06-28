@@ -8,6 +8,11 @@ window.onload = function(){
     add(15);
     sub(15);
     del() ;
+   
+    var back = document.querySelector('.back');
+    back.onclick = function () {
+        window.location.href='orderView.html';
+    }
     function checkAll() {
         var checkedAllBox = document.getElementById("checkedAllBox");
         var shopSele = document.querySelectorAll(".shopSele");
@@ -20,8 +25,10 @@ window.onload = function(){
     }
     function check(){
         var shopSele = document.querySelectorAll(".shopSele");
+        var checkedAllBox = document.getElementById("checkedAllBox");
         for(var i=0;i< shopSele.length;i++){
             (function(i){
+                
                 shopSele[i].onclick = function(){
                     if(this.c== 0){
                         this.c = 1;
@@ -35,8 +42,17 @@ window.onload = function(){
                         this.checked = true;
                         amount();
                     }
+                    for (var j = 0 ;j<shopSele.length;j++){
+                        //只要一个没选中就不是全选
+                        checkedAllBox.checked = true;
+                        if (!shopSele[j].checked) {
+                            checkedAllBox.checked = false;
+                            break;
+                        }
+                    }
                     
                 }
+
             })(i)    
         }
     }
@@ -44,13 +60,16 @@ window.onload = function(){
    function del() {
     var del = document.getElementById("del");
     var shopSele = document.querySelectorAll(".shopSele");
+    var checkedAllBox = document.getElementById("checkedAllBox");
        del.onclick = function(){
         for(var i =0 ;i<shopSele.length;i++){
             if(shopSele[i].checked == true){
                 shopSele[i].parentNode.parentNode.remove();
                 amount();
+
             }
         }
+        checkedAllBox.checked = false;
     }
   
    }
