@@ -1,7 +1,7 @@
 body{
     margin: 0;
     padding: 0;
-    background-image: url("../img/1.jpg");
+   
 }
 .background{
     position: relative;
@@ -21,11 +21,11 @@ body{
     width: 300px;
     height: 500px;
 
-    border: blueviolet;
+    border-radius: 15px;
     display: flex;
     flex-flow: column;
     align-items: center;
-    
+    background: #00BFFF;
 }
 .shopName {
     margin-top: 15px;
