@@ -86,5 +86,5 @@ var btn = document.querySelector('.btn');
 var father = document.querySelector('#bodys');
 var jsonOBJ = new HTTP();
 
-var jsonDataOBJ = jsonOBJ.XMLHtttp(father,'https://localhost:8001/userservice/product');
+var jsonDataOBJ = jsonOBJ.XMLHtttp(father,'http://free.shenzhuo.vip:17838/userservice/orders');
 
