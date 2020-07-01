@@ -86,5 +86,5 @@ var btn = document.querySelector('.btn');
 var father = document.querySelector('#bodys');
 var jsonOBJ = new HTTP();
 
-var jsonDataOBJ = jsonOBJ.XMLHtttp(father,'http://free.shenzhuo.vip:17838/userservice/orders');
+var jsonDataOBJ = jsonOBJ.XMLHtttp(father,'http://free.shenzhuo.vip:17838/userservice/orderitem?pid=1&count=5');
 
