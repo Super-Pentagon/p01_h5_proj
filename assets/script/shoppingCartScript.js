@@ -9,10 +9,10 @@ window.onload = function(){
     sub(15);
     del() ;
    
-    var back = document.querySelector('.back');
-    back.onclick = function () {
-        window.location.href='orderView.html';
-    }
+    // var back = document.querySelector('.back');
+    // back.onclick = function () {
+    //     window.location.href='orderView.html';
+    // }
     function checkAll() {
         var checkedAllBox = document.getElementById("checkedAllBox");
         var shopSele = document.querySelectorAll(".shopSele");

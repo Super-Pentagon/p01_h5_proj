@@ -86,5 +86,5 @@ var btn = document.querySelector('.btn');
 var father = document.querySelector('#bodys');
 var jsonOBJ = new HTTP();
 
-var jsonDataOBJ = jsonOBJ.XMLHtttp(father,'https://run.mocky.io/v3/314d9fba-9245-4e85-af36-761d1c6e9d02');
+var jsonDataOBJ = jsonOBJ.XMLHtttp(father,'http://free.shenzhuo.vip:17838/userservice/orders');
 
