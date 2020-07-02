@@ -185,8 +185,8 @@
 
             },
         });
-        var url = "";
-
+       
+        var myfile = new Object();
         function imgPreview(fileDom, i) {
             //判断是否支持FileReader
             if (window.FileReader) {
@@ -195,16 +195,16 @@
                 alert("您的设备不支持图片预览功能，如需该功能请升级您的设备！");
             }
             //获取文件
-            var file = fileDom.files[0];
+            myfile = fileDom.files[0];
             var imageType = /^image\//;
             //是否是图片
 
 
-            if (!imageType.test(file.type)) {
+            if (!imageType.test(myfile.type)) {
                 alert("请选择图片！");
                 return;
             }
-
+            
             //读取完成
             reader.onload = function (e) {
 
@@ -217,30 +217,59 @@
                 ")no-repeat"; //回显图片
                 document.getElementsByClassName('bj')[i].style.backgroundSize = '100px 100px';
                 console.log('reader', reader)
-                url = reader.result;
-                vm.purl = url;
-
+               
+                
 
             };
 
 
-            reader.readAsDataURL(file);
-
+            reader.readAsDataURL(myfile);
+         
 
         }
-        console.log(vm.purl);
+       
 
-
+        var xhr;
         var div = document.querySelector(".backG");
         var button = document.querySelector("#a");
         var myObj = new Object();
         a.onclick = function () {
-            var myJSON = obj(myObj);
-            var a = new HTTP();
-            a.XMLHtttp(myJSON, "http://free.shenzhuo.vip:17838/userservice/product/addProduct")
+            var FileController = 'upload.php';
+            var form = new FormData();
+            form.append("myfile", myfile);
+            createXMLHttpRequest();
+            xhr.onreadystatechange = handleStateChange;
+            vm.purl = handleStateChange();
+            xhr.open("post", FileController, true);
+            xhr.send(form);
+
+            // var myJSON = obj(myObj);
+            // var a = new HTTP();
+            // a.XMLHtttp(myJSON, "http://free.shenzhuo.vip:17838/userservice/product/addProduct")
+       
         }
-
-
+        function createXMLHttpRequest(){
+                if(window.ActiveXObject)
+                {
+                    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                else if(window.XMLHttpRequest)
+                {
+                    xhr = new XMLHttpRequest();
+                }
+        }
+        function handleStateChange(){
+            if(xhr.readyState == 4)
+            {
+                if (xhr.status == 200 || xhr.status == 0)
+                {
+                    var result = xhr.responseText;
+                    var json = eval("(" + result + ")");
+                    alert('图片链接:n'+json.file);
+                }
+            }
+            // return "http://114.116.243.37" + json.file;
+        }
         function obj(obj) {
 
 
