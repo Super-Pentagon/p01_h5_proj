@@ -218,7 +218,7 @@
                 document.getElementsByClassName('bj')[i].style.backgroundSize = '100px 100px';
                 console.log('reader', reader)
                
-                
+                sendPhoto();
 
             };
 
@@ -228,25 +228,29 @@
 
         }
        
-
+        var url = "";
         var xhr;
         var div = document.querySelector(".backG");
         var button = document.querySelector("#a");
         var myObj = new Object();
+        
         a.onclick = function () {
+
+          
+            // console.log(vm.purl)
+            var myJSON = obj(myObj);
+            var a = new HTTP();
+            a.XMLHtttp(myJSON, "http://free.shenzhuo.vip:17838/userservice/product/addProduct")
+            
+        }
+        function sendPhoto(){
             var FileController = 'upload.php';
             var form = new FormData();
             form.append("myfile", myfile);
             createXMLHttpRequest();
             xhr.onreadystatechange = handleStateChange;
-            vm.purl = handleStateChange();
             xhr.open("post", FileController, true);
             xhr.send(form);
-
-            // var myJSON = obj(myObj);
-            // var a = new HTTP();
-            // a.XMLHtttp(myJSON, "http://free.shenzhuo.vip:17838/userservice/product/addProduct")
-       
         }
         function createXMLHttpRequest(){
                 if(window.ActiveXObject)
@@ -265,11 +269,15 @@
                 {
                     var result = xhr.responseText;
                     var json = eval("(" + result + ")");
-                    alert('图片链接:n'+json.file);
+                    vm.purl = "http://114.116.243.37"+json.file;
+                    
+               
+                    
                 }
             }
             // return "http://114.116.243.37" + json.file;
         }
+ 
         function obj(obj) {
 
 
