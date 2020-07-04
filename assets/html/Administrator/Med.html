@@ -143,7 +143,7 @@
            var myget = new myGet();
            var product = myget.XMLHtttpGet("http://free.shenzhuo.vip:17838/userservice/product");
            
-           console.log(0);
+           console.log("http://free.shenzhuo.vip:17838/userservice/product"+"/"+vm.pid);
            
        }
        var submitObj = new Object();
@@ -159,6 +159,7 @@
            console.log("del");
            var mydel = new myDel();
            mydel.XMLHtttpDel("http://free.shenzhuo.vip:17838/userservice/product"+"/"+vm.pid);
+          
            
            
        }
