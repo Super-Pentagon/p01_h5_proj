@@ -26,15 +26,21 @@ class HTTP{
                     jsonObj = JSON.parse(data);
                     let list = jsonObj.data.list;
                     console.log(list);
-                    
                     for(let i =0;i<list.length;i++){
-                        // console.log(jsonObj.list[i]);
-                       
-                        createOrders( father,list[i].orderItemvos[0].product.purl , list[i].orderItemvos[0].product.pname, list[i].orderItemvos[0].product.price*list[i].orderItemvos.count,list[i].time,"催促商家");
+                        if(list[i].orderItemvos!=[]){
+                            for(let j =0;j<list[i].orderItemvos.length;j++){
+                                createOrders( father,list[i].orderItemvos[j].product.purl , list[i].orderItemvos[j].product.pname,list[i].orderItemvos[j].subtotal,list[i].time,"催促商家");
+console.log("我是j"+j);
+console.log("我是i"+i);
+
+                            }
+                        }
                     }
+                    
                     // alert(jsonObj[5].name);
                     //3、js中+号连接字符串   4、XMLHttpRequest对象的responseText属性获取从服务器返回的数据
                 }else{ 
+                    console.log(myajax.readyState);
                         alert('失败'+myajax.status)
                 }
             }
@@ -86,7 +92,8 @@ function createOrders( father,picturesURL,name, priceNum,time,button){
 function tiaozhuan(){
     window.location.href = "ShoppingCartInterface.html"
 }
-var btn = document.querySelector('.btn');
+ 
+// document.getElementById("btn").onclick = function(){window.Android.loading()}
 
 var father = document.querySelector('#bodys');
 var jsonOBJ = new HTTP();

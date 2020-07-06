@@ -109,13 +109,13 @@
 <body>
     <div id = "backG" class="backG">
        
-        <div><span>商品I D</span><input type="text" v-model = "pid"></div>
-        <div v-if= "!flag"><a href="#" id="query" class="animBtn themeD">查询</a></div>
+        <div><span>商品I D</span><input type="text" v-model = "pid" oninput="value=value.replace(/[^\d]/g,'')"></div>
+        <div v-if= "!flag"><a href="#" id="query" class="animBtn themeD" >查询</a></div>
         <div v-if = "flag"><span>商品描述</span><input type="text" v-model = "des"></div>
         <div  v-if = "flag"><span>商品名称</span><input type="text" v-model = "pname"></div>
-        <div  v-if = "flag"><span>商品价格</span><input type="text" v-model = "price"></div>
+        <div  v-if = "flag"><span>商品价格</span><input type="text" v-model = "price" oninput="value=value.replace(/[^\d]/g,'')"></div>
         <div  v-if = "flag"><span>图片地址</span><input type="text" v-model = "purl"></div>
-        <div  v-if = "flag"><span>卖家I D</span><input type="text" v-model = "sid"></div>
+        <div  v-if = "flag"><span>卖家I D</span><input type="text" v-model = "sid" oninput="value=value.replace(/[^\d]/g,'')"></div>
         <div v-show = "flag"><a href="#" id="submit" class="animBtn themeD">修改</a>
             <a href="#" id="del" class="animBtn themeD">删除</a></div>
         
@@ -134,26 +134,34 @@
                 flag:false,
            },
        });
-
+     
        var query = document.getElementById('query');
        var submit = document.getElementById('submit');
        var del = document.getElementById('del');
+       
        query.onclick = function(){
+        if(vm.pid==""){
+           alert("商品id输入有误！");
           
-           var myget = new myGet();
+       } else{
+        var myget = new myGet();
            var product = myget.XMLHtttpGet("http://free.shenzhuo.vip:17838/userservice/product");
            
-           console.log("http://free.shenzhuo.vip:17838/userservice/product"+"/"+vm.pid);
+           console.log("http://free.shenzhuo.vip:17838/userservice/product"+"/"+vm.pid);  
+        }
+           
            
        }
        var submitObj = new Object();
        submit.onclick = function(){
            console.log(778);
-           
+        if(vm.des ==""||vm.pid=="" || vm.pname==""||vm.price==""||vm.purl==""||vm.sid==""){
+            alert("商品信息输入有误！请重新输入")
+        }else{
            var myJSON = obj(submitObj);
            var mypost = new myPost();
            mypost.XMLHtttpPost(myJSON,"http://free.shenzhuo.vip:17838/userservice/product/updateProduct")
-           
+        } 
        }
        del.onclick = function(){
            console.log("del");

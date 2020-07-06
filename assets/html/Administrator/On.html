@@ -148,10 +148,10 @@
 <body>
     <div id="backG" class="backG">
         <div class="text"><span>商品描述</span><input type="text" v-model="des"></div>
-        <div><span>商品I D</span><input type="text" v-model="pid"></div>
+        <div><span>商品I D</span><input type="text" v-model="pid" oninput="value=value.replace(/[^\d]/g,'')"></div>
         <div><span>商品名称</span><input type="text" v-model="pname"></div>
-        <div><span>商品价格</span><input type="text" v-model="price"></div>
-        <div><span>卖家I D</span><input type="text" v-model="sid"></div>
+        <div><span>商品价格</span><input type="text" v-model="price" oninput="value=value.replace(/[^\d]/g,'')"></div>
+        <div><span>卖家I D</span><input type="text" v-model="sid" oninput="value=value.replace(/[^\d]/g,'')"></div>
         <div><span class="tp">添加商品图片</span>
             <span class="bj">
                  
@@ -236,11 +236,15 @@
         
         a.onclick = function () {
 
-          
-            // console.log(vm.purl)
+            if(vm.des ==""||vm.pid=="" || vm.pname==""||vm.price==""||vm.purl==""||vm.sid==""){
+                alert("商品信息输入有误！")
+            }else{
+                       // console.log(vm.purl)
             var myJSON = obj(myObj);
             var a = new HTTP();
             a.XMLHtttp(myJSON, "http://free.shenzhuo.vip:17838/userservice/product/addProduct")
+            }
+     
             
         }
         function sendPhoto(){

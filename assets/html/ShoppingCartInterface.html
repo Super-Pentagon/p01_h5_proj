@@ -58,7 +58,6 @@
         </div>
     </div>
     <script src="../script/jQuery.js"></script>
-    <script src="../script/shoppingCartScript.js"></script>
     <script src="../script/vue.js"></script>
     <script>
         // let app=new Vue({
@@ -208,6 +207,7 @@ window.onload = function () {
                         let json = JSON.stringify(obj);
                         console.log(json);
                         posts("http://personal2.shenzhuo.vip:18019/userservice/orders/addOrder",json);
+                        
                         for(let i = 0;i<oid.length;i++){
                             console.log(oid[i]);
                             
