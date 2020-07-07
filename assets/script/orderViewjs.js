@@ -30,8 +30,7 @@ class HTTP{
                         if(list[i].orderItemvos!=[]){
                             for(let j =0;j<list[i].orderItemvos.length;j++){
                                 createOrders( father,list[i].orderItemvos[j].product.purl , list[i].orderItemvos[j].product.pname,list[i].orderItemvos[j].subtotal,list[i].time,"催促商家");
-console.log("我是j"+j);
-console.log("我是i"+i);
+
 
                             }
                         }
@@ -100,4 +99,3 @@ var jsonOBJ = new HTTP();
 
 var jsonDataOBJ = jsonOBJ.XMLHtttp(father,'http://personal2.shenzhuo.vip:18019/userservice/orders/getOrderList/1279088273653854209');
 
-let bid = "1278278746071109633";
